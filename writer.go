@@ -124,7 +124,6 @@ func (f *Frame) writeFrame(w *bufio.Writer, l string) error {
 	for i := 0; i < len(f.Headers); i += 2 {
 		if l > SPL_10 && f.Command != CONNECT {
 			f.Headers[i] = encode(f.Headers[i])
-			f.Headers[i+1] = encode(f.Headers[i+1])
 		}
 		_, e := w.WriteString(f.Headers[i] + ":" + f.Headers[i+1] + "\n")
 		if e != nil {
